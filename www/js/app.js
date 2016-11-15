@@ -23,10 +23,15 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
   });
 })
 
-.controller("ExampleController", function($scope, $rootScope, $ionicPlatform, $cordovaBeacon) {
+.controller("MainController", function($scope, $rootScope, $ionicPlatform, $cordovaBeacon) {
  
     $scope.beacons = {};
-    $scope.originalObject = {};
+    $scope.actualMeal = {
+      energy: 1234,
+      protein: 2345,
+      carbs: 3456,
+      fat: 12
+    };
  
     $ionicPlatform.ready(function() {
 
