@@ -1,7 +1,7 @@
 {
-  "name": "todo",
+  "name": "test",
   "version": "1.1.1",
-  "description": "todo: An Ionic project",
+  "description": "Test: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
@@ -15,15 +15,11 @@
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
-    "cordova-plugin-device",
-    "cordova-plugin-console",
     "cordova-plugin-whitelist",
+    "cordova-plugin-console",
+    "cordova-plugin-device",
     "cordova-plugin-splashscreen",
-    "cordova-plugin-statusbar",
     "ionic-plugin-keyboard"
   ],
-  "cordovaPlatforms": [
-    "ios",
-    "android"
-  ]
+  "cordovaPlatforms": []
 }

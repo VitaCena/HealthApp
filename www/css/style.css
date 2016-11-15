@@ -1,11 +1,69 @@
 /* Empty. Add your own CSS if you like */
-.truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+
+.center{
+    text-align:center;
 }
 
-.wrapping-list .item-content, .wrapping-list .item {
-    overflow: initial;
-    white-space: initial;
+.button {
+  background-color: #23a626; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.label {
+  color: #23a626;
+  text-align: center;
+  display:inline-block;
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+  font-weight: bold;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.image {
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.list-names {
+  width: 40%;
+  font-weight: bold;
+}
+
+.list-values {
+  width: 40%;
+  text-align: right;
+}
+
+.list-units {
+  width: 20%;
+  font-weight: bold;
+  text-align: center;
+}
+
+#button1 {
+  font-size: 30px;
+  text-align:center;
+  font-family:"Comic Sans MS";
+  color: #c721c2;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%
 }

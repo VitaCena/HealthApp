@@ -28,43 +28,69 @@
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
-    <script src="js/ng-cordova-beacon.min.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
   </head>
   <body ng-app="starter">
 
     <ion-pane>
       <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
+        <h1 class="title">Vita Cena</h1>
       </ion-header-bar>
-      <ion-content ng-controller="ExampleController">
-        <div class="wrapping-list">
-          <div class="item" ng-repeat="(key, value) in beacons">
-            <div class="row">
-                <div class="col truncate">
-                    {{value.uuid}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    major: {{value.major}}
-                </div>
-                <div class="col">
-                    minor: {{value.minor}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {{value.proximity}}
-                </div>
-                <div class="col">
-                    {{value.rssi}}
-                </div>
-            </div>
+      <ion-content>
+        <!-- <button ion-button>Round Button</button> -->
+
+
+          <div class="column">
+
+              <!-- Name des Essens -->
+              <label class="label">
+                Whopper
+              </label>
+
+              <!-- Bild des Essens -->
+            <img class="image" src="img/whopper.png">
+
+
+            <!-- Label Nährwerte -->
+              <label class="label">
+                Nährwerte
+              </label>
+
+              <!-- Liste der Inhaltsstoffe -->
+              <div class="row">
+                <ion-list class="list-names">
+                  <ion-item class="item-borderless">Energy</ion-item>
+                  <ion-item class="item-borderless">Protein</ion-item>
+                  <ion-item class="item-borderless">Carbs</ion-item>
+                  <ion-item class="item-borderless">Fat</ion-item>
+                </ion-list>
+
+                <!-- Liste mit Daten die aus JSON gefüllt wird -->
+                <ion-list class="list-values">
+                  <ion-item class="item-borderless">1233</ion-item>
+                  <ion-item class="item-borderless">1233</ion-item>
+                  <ion-item class="item-borderless">1233</ion-item>
+                  <ion-item class="item-borderless">1233</ion-item>
+                </ion-list>
+
+                <ion-list class="list-units">
+                  <ion-item class="item-borderless">kCal</ion-item>
+                  <ion-item class="item-borderless">g</ion-item>
+                  <ion-item class="item-borderless">g</ion-item>
+                  <ion-item class="item-borderless">g</ion-item>
+                </ion-list>
+              </div>
+
+
+              <button class="button button-balanced">
+                Save my Meal
+              </button>
+
           </div>
-        </div>
+
       </ion-content>
     </ion-pane>
   </body>
