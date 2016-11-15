@@ -23,15 +23,33 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
   });
 })
 
-.controller("ExampleController", function($scope, $rootScope, $ionicPlatform, $cordovaBeacon) {
- 
+.controller("MainController", function($scope, $rootScope, $ionicPlatform, $cordovaBeacon, $http) {
+
     $scope.beacons = {};
-    $scope.originalObject = {};
- 
+    $scope.actualMeal = {
+      energy: 1234,
+      protein: 2345,
+      carbs: 3456,
+      fat: 12
+    };
+
+      $scope.onButtonClick = function(){
+        console.log("Test");
+
+        $http.get('https://vita-cena.mybluemix.net/meals?id=1')
+          .success(function(response){
+          $scope.result = JSON.stringify(response);
+          console.log("Result: " + $scope.result);
+        })
+          .catch(function(error){
+            console.log("Error: " + JSON.stringify(error));
+          });
+      };
+
     $ionicPlatform.ready(function() {
 
         $cordovaBeacon.requestWhenInUseAuthorization();
- 
+
         $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function(event, pluginResult) {
 
             $scope.beacons = {};
@@ -43,8 +61,8 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
 
             $scope.$apply();
         });
- 
+
         $cordovaBeacon.startRangingBeaconsInRegion($cordovaBeacon.createBeaconRegion("estimote", "e2c56db5-dffb-48d2-b060-d0f5a71096e0"));
- 
+
     });
 });

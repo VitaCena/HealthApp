@@ -32,8 +32,8 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/controller.js"></script>
+    <!-- <script src="js/services.js"></script>
+    <script src="js/controller.js"></script> -->
   </head>
   <body ng-app="starter">
 
@@ -41,7 +41,7 @@
       <ion-header-bar class="bar-stable">
         <h1 class="title">Vita Cena</h1>
       </ion-header-bar>
-      <ion-content ng-controller="">
+      <ion-content ng-controller="MainController">
         <!-- <button ion-button>Round Button</button> -->
 
 
@@ -72,10 +72,10 @@
 
                 <!-- Liste mit Daten die aus JSON gefüllt wird -->
                 <ion-list class="list-values">
-                  <ion-item class="item-borderless">1233</ion-item>
-                  <ion-item class="item-borderless">1233</ion-item>
-                  <ion-item class="item-borderless">1233</ion-item>
-                  <ion-item class="item-borderless">1233</ion-item>
+                  <ion-item class="item-borderless">{{actualMeal.energy}}</ion-item>
+                  <ion-item class="item-borderless">{{actualMeal.protein}}</ion-item>
+                  <ion-item class="item-borderless">{{actualMeal.carbs}}</ion-item>
+                  <ion-item class="item-borderless">{{actualMeal.fat}}</ion-item>
                 </ion-list>
 
                 <ion-list class="list-units">
@@ -87,7 +87,7 @@
               </div>
 
 
-              <button ng-click="" class="button button-balanced">
+              <button ng-click="onButtonClick()" class="button button-balanced">
                 Save my Meal
               </button>
 
