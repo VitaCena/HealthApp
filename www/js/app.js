@@ -33,18 +33,21 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
       fat: 12
     };
 
-      $scope.onButtonClick = function(){
-        console.log("Test");
+    $scope.onButtonClick = function(){
 
-        $http.get('https://vita-cena.mybluemix.net/meals?id=1')
-          .success(function(response){
-          $scope.result = JSON.stringify(response);
-          console.log("Result: " + $scope.result);
+      console.log("Test");
+      $scope.result = "";
+      
+      $http.get('https://vita-cena.mybluemix.net/meals?id=1')
+        .success(function(data, status, headers,config){
+          console.log('data success');
+          console.log(JSON.stringify(data)); // for browser console
+          $scope.result = data; // for UI
         })
-          .catch(function(error){
-            console.log("Error: " + JSON.stringify(error));
-          });
-      };
+        .error(function(data, status, headers,config){
+          console.log('data error: ' + JSON.stringify(status) + ' | ' + JSON.stringify(headers));
+        });
+    };
 
     $ionicPlatform.ready(function() {
 
