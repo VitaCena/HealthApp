@@ -58,15 +58,15 @@
 
               <!-- Name des Essens -->
               <label class="label">
-                Whopper
+                {{result.name}}
               </label>
 
               <!-- Bild des Essens -->
-            <img class="image" src="img/whopper.png">
+            <img class="image" src={{result.image}}>
 
 
             <!-- Label Nährwerte -->
-              <label class="label">
+              <label class="label label-sexy-title">
                 Nährwerte
               </label>
 
@@ -95,10 +95,11 @@
                 </ion-list>
               </div>
 
-
               <button ng-click="onButtonClick()" class="button button-balanced">
-                Save my Meal
+                  Save my Meal
               </button>
+
+
 
           </div>
 
