@@ -35,6 +35,7 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
 
     $scope.onButtonClick = function(){
 
+<<<<<<< HEAD
       console.log("Test");
       $scope.result = "";
       
@@ -43,6 +44,12 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
           console.log('data success');
           console.log(JSON.stringify(data)); // for browser console
           $scope.result = data; // for UI
+=======
+        $http.get('https://vita-cena.mybluemix.net/meals?id=1')
+          .success(function(response){
+          $scope.result = response;
+          console.log("Result: " + $scope.result);
+>>>>>>> 3977b96335fe924aef572a74b5772a581e16b061
         })
         .error(function(data, status, headers,config){
           console.log('data error: ' + JSON.stringify(status) + ' | ' + JSON.stringify(headers));

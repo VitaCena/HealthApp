@@ -4,8 +4,20 @@
     text-align:center;
 }
 
+.title {
+  font-size: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.auth {
+  font-size: 10px;
+  font-weight: bold;
+  text-align: right;
+}
+
 .button {
-  background-color: #23a626; /* Green */
+  background-color: #23a626;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -18,6 +30,22 @@
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.button-sexy {
+  background-color: #23a626; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
   margin-bottom: 10px;
 }
 
