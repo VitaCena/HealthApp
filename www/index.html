@@ -42,6 +42,7 @@
 
         <ion-header-bar align-title="left">
           <h1 class="title">Vita Cena</h1>
+          <img class="image-sexy-logo" src="img/VitaCena.png">
           <div class="buttons">
             <button class="button button-sexy" onclick="window.open('https://jawbone.com/auth/oauth2/auth?response_type=code&client_id=kWfQlJRDY9E&redirect_uri=https://vita-cena.mybluemix.net/redirect&scope=meal_write move_read', '_blank', 'location=no');
               return false;">
@@ -54,18 +55,20 @@
         <!-- <button ion-button>Round Button</button> -->
 
 
-          <div class="column">
+          <div class="column" style="height: 90vh">
 
+            <div style="height: 40vh">
               <!-- Name des Essens -->
-              <label class="label">
-                {{result.name}}
-              </label>
+                <label class="label">
+                  {{result.name}}
+                </label>
 
               <!-- Bild des Essens -->
-            <img class="image" src={{result.image}}>
+              <img class="image" src={{result.image}}>
+            </div>
 
-
-            <!-- Label Nährwerte -->
+            <div style="height: 50vh">
+              <!-- Label Nährwerte -->
               <label class="label label-sexy-title">
                 Nährwerte
               </label>
@@ -98,7 +101,7 @@
               <button ng-click="onButtonClick()" class="button button-balanced">
                   Save my Meal
               </button>
-
+            </div>
 
 
           </div>

@@ -74,6 +74,13 @@
   display: block;
 }
 
+.image-sexy-logo {
+  width: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 .list-names {
   width: 40%;
   font-weight: bold;
