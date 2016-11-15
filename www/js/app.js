@@ -41,8 +41,8 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
       $http.get('https://vita-cena.mybluemix.net/meals?id=1')
         .success(function(data, status, headers,config){
           console.log('data success');
-          console.log(JSON.stringify(data)); // for browser console
-          $scope.result = data;
+          console.log(JSON.stringify(data[0])); // for browser console
+          $scope.result = data[0];
         })
         .error(function(data, status, headers,config){
           console.log('data error: ' + JSON.stringify(status) + ' | ' + JSON.stringify(headers));
