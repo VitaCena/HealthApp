@@ -16,14 +16,14 @@ Aufgrund der begrenzten Zeit des Hackathon wurden folgende MVP-Anforderungen fü
 ![Overview](https://github.com/VitaCena/HealthApp/blob/master/Architektur.PNG)
 
 
-Die Geschäftslogik ist über IBM Bluemix als 'Node-RED' Cloud Anwendung abgebildet und bietet eine REST-Kommunikations-Schnittstelle zur Jawbone-API und stellt eine REST-Schnittstelle zum Hinzufügen von Mahlzeiten zur Verfügung
+Die Geschäftslogik ist über IBM Bluemix als ['Node-RED'](http://vita-cena.mybluemix.net/) Cloud Anwendung abgebildet und bietet eine REST-Kommunikations-Schnittstelle zur Jawbone-API und stellt eine REST-Schnittstelle zum Hinzufügen von Mahlzeiten zur Verfügung
 
 
 ### Eingesetzte Komponenten
 
 * Fitnesstracker Jawbone UP (als Essenstracker)
 * iBeacon
-* IBM Bluemix
+* [IBM Bluemix] (https://hub.jazz.net/project/vitacena/Vita%20Cena/overview)
 * Raspberry 3
 * [Cita Vena App] (https://github.com/VitaCena/HealthApp/blob/master/www/)
 
