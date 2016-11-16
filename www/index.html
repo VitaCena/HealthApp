@@ -38,20 +38,19 @@
   </head>
   <body ng-app="starter">
 
-    <ion-pane>
+    <ion-pane ng-controller="MainController">
 
         <ion-header-bar align-title="left">
           <h1 class="title">Vita Cena</h1>
           <img class="image-sexy-logo" src="img/VitaCena.png">
           <div class="buttons">
-            <button class="button button-sexy" onclick="window.open('https://jawbone.com/auth/oauth2/auth?response_type=code&client_id=kWfQlJRDY9E&redirect_uri=https://vita-cena.mybluemix.net/redirect&scope=meal_write move_read', '_blank', 'location=no');
-              return false;">
+            <button class="button button-sexy" ng-click="onJawboneClick()">
               Connect Jawbone
             </button>
           </div>
         </ion-header-bar>
 
-      <ion-content ng-controller="MainController">
+      <ion-content>
         <!-- <button ion-button>Round Button</button> -->
 
 

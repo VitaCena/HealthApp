@@ -43,8 +43,50 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
         });
     };
 
-    $scope.onJawboneClick = function() { //https://vita-cena.mybluemix.net/redirect
+    $scope.onJawboneClick = function() {
 
+      $http.get('https://vita-cena.mybluemix.net/token?user=Test_User')
+        .success(function(data, status, headers, config){
+
+          console.log(data);
+
+          var items = [{
+            name: "Meal1",
+            measurement: "grams",
+            amount: 250,
+            sub_type: 2,
+            calories: 342,
+            protein: 123,
+            saturated_fat: 12,
+            unsaturated_fat: 14,
+            carbohydrate: 154
+          }];
+
+          data = 'aV1SI82xvTpK_Sa3ZSjDLDrylie4AAUvX0PlsHpLJUBC7LrLTyKlEdDroyDsnSQkrdG4YRHS8UrxnF8Qq8rkdVECdgRlo_GULMgGZS0EumxrKbZFiOmnmAPChBPDZ5JP';
+
+          var req = {
+            method: 'POST',
+            //url: encodeURI('https://jawbone.com/nudge/api/v.1.1/users/@me/meals?note=Test_Meal&title=Test_Meal&tz=GMT+0100&items='+JSON.stringify(items)),
+            url: 'https://jawbone.com/nudge/api/v.1.1/users/@me/meals?note=Test_Meal&title=Test_Meal&tz=GMT+0100&items=[{%22name%22:%22Meal1%22,%22measurement%22:%22grams%22,%22amount%22:250,%22sub_type%22:2,%22calories%22:342,%22protein%22:123,%22saturated_fat%22:12,%22unsaturated_fat%22:14,%22carbohydrate%22:154}]',
+            headers: {
+              'Authorization': 'Bearer ' + data,
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'Accept': 'application/json'
+            }
+          };
+
+          console.log("URL: " + req.url);
+
+          $http(req).then(function(data, status, headers,config){
+            console.log('data success');
+            console.log(JSON.stringify(data));
+          }, function(data, status, headers,config){
+            console.log('data error: ' + JSON.stringify(status) + ' | ' + JSON.stringify(headers) + ' | ' + JSON.stringify(data));
+          });
+        })
+        .error(function(data, status, headers,config){
+          console.log('data error: ' + JSON.stringify(status) + ' | ' + JSON.stringify(headers) + ' | ' + JSON.stringify(data));
+        });
     };
 
     $ionicPlatform.ready(function() {
