@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <script src="js/ng-cordova-beacon.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <!-- <script src="js/services.js"></script>
+    <script src="js/controller.js"></script> -->
+  </head>
+  <body ng-app="starter">
+
+    <ion-pane>
+
+        <ion-header-bar align-title="left">
+          <h1 class="title">Vita Cena</h1>
+          <img class="image-sexy-logo" src="img/VitaCena.png">
+          <div class="buttons">
+            <button class="button button-sexy" onclick="window.open('https://jawbone.com/auth/oauth2/auth?response_type=code&client_id=kWfQlJRDY9E&redirect_uri=https://vita-cena.mybluemix.net/redirect&scope=meal_write move_read', '_blank', 'location=no');
+              return false;">
+              Connect Jawbone
+            </button>
+          </div>
+        </ion-header-bar>
+
+      <ion-content ng-controller="MainController">
+        <!-- <button ion-button>Round Button</button> -->
+
+
+          <div class="column" style="height: 80vh">
+
+            <div style="height: 40vh">
+              <!-- Name des Essens -->
+                <label class="label">
+                  {{result.name}}
+                </label>
+
+              <!-- Bild des Essens -->
+              <img class="image" src={{result.image_url}}>
+            </div>
+
+            <div style="height: 40vh">
+              <!-- Label Nährwerte -->
+              <label class="label label-sexy-title">
+                Nährwerte
+              </label>
+
+              <!-- Liste der Inhaltsstoffe -->
+              <div class="row">
+                <ion-list class="list-names">
+                  <ion-item class="item-borderless">Energy</ion-item>
+                  <ion-item class="item-borderless">Protein</ion-item>
+                  <ion-item class="item-borderless">Carbs</ion-item>
+                  <ion-item class="item-borderless">Fat</ion-item>
+                </ion-list>
+
+                <!-- Liste mit Daten die aus JSON gefüllt wird -->
+                <ion-list class="list-values">
+                  <ion-item class="item-borderless">{{result.calories}}</ion-item>
+                  <ion-item class="item-borderless">{{result.protein}}</ion-item>
+                  <ion-item class="item-borderless">{{result.carbohydrate}}</ion-item>
+                  <ion-item class="item-borderless">{{result.saturated_fat}}</ion-item>
+                </ion-list>
+
+                <ion-list class="list-units">
+                  <ion-item class="item-borderless">kCal</ion-item>
+                  <ion-item class="item-borderless">g</ion-item>
+                  <ion-item class="item-borderless">g</ion-item>
+                  <ion-item class="item-borderless">g</ion-item>
+                </ion-list>
+              </div>
+
+              <button ng-click="onButtonClick()" class="button button-balanced">
+                  Save my Meal
+              </button>
+            </div>
+
+
+          </div>
+
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
