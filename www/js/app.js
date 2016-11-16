@@ -28,9 +28,10 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
     $scope.beacons = {};
     $scope.result = "";
     $scope.testResult = "Test";
+    $scope.beaconLast ={};
 
     $scope.onButtonClick = function(){
-      
+
       $http.get('https://vita-cena.mybluemix.net/meals?id=1')
         .success(function(data, status, headers,config){
           $scope.result = "";
@@ -68,8 +69,43 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
                 }
             }
 
+          if($scope.beaconLast.rssi===null || $scope.beaconLast.rssi === 'undefined' && nearestBeacon != null){
+              $scope.beaconLast = nearestBeacon;
+            $http.get('https://vita-cena.mybluemix.net/meals?id=' + nearestBeacon.minor)
+              .success(function(data, status, headers,config){
+                $scope.result = "";
+                console.log('data success');
+                console.log(JSON.stringify(data[0])); // for browser console
+                $scope.result = data[0];
+              })
+              .error(function(data, status, headers,config){
+                console.log('data error: ' + JSON.stringify(status) + ' | ' + JSON.stringify(headers));
+              });
+          }
+
+          else{
+
+            if($scope.beaconLast.rssi != nearestBeacon.rssi){
+              if(nearestBeacon != null) {
+                $scope.beaconLast = nearestBeacon;
+                $http.get('https://vita-cena.mybluemix.net/meals?id=' + nearestBeacon.minor)
+                  .success(function(data, status, headers,config){
+                    $scope.result = "";
+                    console.log('data success');
+                    console.log(JSON.stringify(data[0])); // for browser console
+                    $scope.result = data[0];
+                  })
+                  .error(function(data, status, headers,config){
+                    console.log('data error: ' + JSON.stringify(status) + ' | ' + JSON.stringify(headers));
+                  });
+
+              }
+
+            }
+          }
+
             if(nearestBeacon != null) {
-              $scope.testResult = JSON.stringify(nearestBeacon);
+              //$scope.testResult = JSON.stringify(nearestBeacon);
               $http.get('https://vita-cena.mybluemix.net/meals?id=' + nearestBeacon.minor)
                 .success(function(data, status, headers,config){
                   $scope.result = "";
