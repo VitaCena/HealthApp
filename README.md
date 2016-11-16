@@ -16,7 +16,7 @@ Aufgrund der begrenzten Zeit des Hackathon wurden folgende MVP-Anforderungen fü
 
 ### Architecture
 
-![Overview](http://rawgit.com/miwurster/msc-iot-kaffeekanne/master/overview.svg)
+![Overview](http://rawgit.com/vitacena/healthapp/master/architektur.png)
 
 The [GRAM RZ-30](sensor) scale is connected to a Raspberry Pi. Those two parts build our sensor. On the Raspberry Pi, a Python script receives the measurements from the scale and pushes them to IBM Bluemix.
 
@@ -38,11 +38,9 @@ Using Cloud Foundry's `staticfile` buildpack, we are going to serve the end-user
 * [Current Coffee Level](https://kaffeekanne1.eu-gb.mybluemix.net)
 * [IoT Kaffeekanne on Twitter](https://twitter.com/kaffeekanne1)
 
-### Contributors (and Responsibilities)
+### Projektteam
 
-* Daniel Joos (Python Sensor, Raspberry Pi integration)
-* Eduard Yarolyan (Kaffee API, NoSQL Database Layer)
-* Manuel Breithaupt (Device API, Twitter Integration)
-* Michael Wurster (Raspberry Pi integration, Web Application)
-* Arbnora Selimi (Documentation, Web Application)
-* Emrullah Apaydin (Documentation, IBM Bluemix Setup, supported other team members)
+* Simon Bantle
+* Andreas Hellmann
+* Moritz Kornmeier
+* Adrian Reh
