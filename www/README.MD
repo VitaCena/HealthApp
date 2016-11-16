@@ -3,7 +3,7 @@
 > Benutzerfreundliche Anwendung mit Hilfe des [Ionic Framework](http://ionicframework.com/docs/v2/getting-started/tutorial/).
 
 
-![App-Screen](https://github.com/VitaCena/HealthApp/blob/master/VitaCenaApp.png)
+![App-Screen](https://github.com/VitaCena/HealthApp/blob/master/VitaCenaApp_Small.png)
 
 Die Anwendung ist über HTML und CSS Dateien abgebildet und nutzt Javascript.
 
