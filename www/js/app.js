@@ -49,28 +49,36 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
       $http.get('https://vita-cena.mybluemix.net/token?user=Test_User')
         .success(function(data, status, headers, config){
 
-          console.log(data);
+          var actualToken = null;
+
+          for (var i = 0; i < data.length; i++) {
+            if(actualToken === null || actualToken.timestamp < data[i].timestamp)
+              actualToken = data[i];
+          }
+
+          console.log(actualToken.access_token);
 
           var items = [{
-            name: "Meal1",
-            measurement: "grams",
-            amount: 250,
+            name: $scope.result.name,
             sub_type: 2,
-            calories: 342,
-            protein: 123,
-            saturated_fat: 12,
-            unsaturated_fat: 14,
-            carbohydrate: 154
+            calories: $scope.result.calories,
+            protein: $scope.result.protein,
+            saturated_fat: $scope.result.saturated_fat,
+            unsaturated_fat: $scope.result.unsaturated_fat,
+            carbohydrate: $scope.result.carbohydrate
           }];
 
-          data = 'aV1SI82xvTpK_Sa3ZSjDLDrylie4AAUvX0PlsHpLJUBC7LrLTyKlEdDroyDsnSQkrdG4YRHS8UrxnF8Qq8rkdVECdgRlo_GULMgGZS0EumxrKbZFiOmnmAPChBPDZ5JP';
+          var title = $scope.result.name;
+          var image = $scope.result.image_url;
+
+          // data = 'aV1SI82xvTpK_Sa3ZSjDLDrylie4AAUvX0PlsHpLJUBC7LrLTyKlEdDroyDsnSQkrdG4YRHS8UrxnF8Qq8rkdVECdgRlo_GULMgGZS0EumxrKbZFiOmnmAPChBPDZ5JP';
 
           var req = {
             method: 'POST',
-            //url: encodeURI('https://jawbone.com/nudge/api/v.1.1/users/@me/meals?note=Test_Meal&title=Test_Meal&tz=GMT+0100&items='+JSON.stringify(items)),
-            url: 'https://jawbone.com/nudge/api/v.1.1/users/@me/meals?note=Test_Meal&title=Test_Meal&tz=GMT+0100&items=[{%22name%22:%22Meal1%22,%22measurement%22:%22grams%22,%22amount%22:250,%22sub_type%22:2,%22calories%22:342,%22protein%22:123,%22saturated_fat%22:12,%22unsaturated_fat%22:14,%22carbohydrate%22:154}]',
+            url: encodeURI('https://jawbone.com/nudge/api/v.1.1/users/@me/meals?note='+title+'&title='+title+'&image_url='+image+'&tz=GMT+0100&items='+JSON.stringify(items)),
+            // url: 'https://jawbone.com/nudge/api/v.1.1/users/@me/meals?note=Test_Meal&title=Test_Meal&tz=GMT+0100&items=[{%22name%22:%22Meal1%22,%22measurement%22:%22grams%22,%22amount%22:250,%22sub_type%22:2,%22calories%22:342,%22protein%22:123,%22saturated_fat%22:12,%22unsaturated_fat%22:14,%22carbohydrate%22:154}]',
             headers: {
-              'Authorization': 'Bearer ' + data,
+              'Authorization': 'Bearer ' + actualToken.access_token,
               'Content-Type': 'application/x-www-form-urlencoded',
               'Accept': 'application/json'
             }
