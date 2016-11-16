@@ -28,7 +28,7 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
     $scope.beacons = {};
     $scope.result = "";
     $scope.testResult = "Test";
-    $scope.beaconLast ={};
+    $scope.beaconLast = null;
 
     $scope.onButtonClick = function(){
 
@@ -96,69 +96,33 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
 
         $rootScope.$on("$cordovaBeacon:didRangeBeaconsInRegion", function(event, pluginResult) {
 
-            $scope.beacons = {};
+          $scope.beacons = {};
 
-            var nearestBeacon = {};
+          var nearestBeacon = null;
 
-            for(var i = 0; i < pluginResult.beacons.length; i++) {
-                var uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
-                $scope.beacons[uniqueBeaconKey] = pluginResult.beacons[i];
+          for(var i = 0; i < pluginResult.beacons.length; i++) {
+            var uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
+            $scope.beacons[uniqueBeaconKey] = pluginResult.beacons[i];
 
-                if(!(typeof pluginResult.beacons[i].rssi === 'undefined' || pluginResult.beacons[i].rssi === null)
-                && ((typeof nearestBeacon.rssi === 'undefined' || nearestBeacon.rssi === null)
-                || nearestBeacon.rssi < pluginResult.beacons[i].rssi)){
-                  nearestBeacon = pluginResult.beacons[i];
-                }
+            if(!(typeof pluginResult.beacons[i].rssi === 'undefined' || pluginResult.beacons[i].rssi === null)
+            && (nearestBeacon === null || nearestBeacon.rssi < pluginResult.beacons[i].rssi)){
+              nearestBeacon = pluginResult.beacons[i];
             }
+          }
 
-          if($scope.beaconLast.rssi===null || $scope.beaconLast.rssi === 'undefined' && nearestBeacon != null){
-              $scope.beaconLast = nearestBeacon;
+          if($scope.beaconLast === null || $scope.beaconLast.minor != nearestBeacon.minor){
+            $scope.beaconLast = nearestBeacon;
             $http.get('https://vita-cena.mybluemix.net/meals?id=' + nearestBeacon.minor)
-              .success(function(data, status, headers,config){
+              .success(function(data, status, headers, config){
                 $scope.result = "";
                 console.log('data success');
                 console.log(JSON.stringify(data[0])); // for browser console
                 $scope.result = data[0];
               })
-              .error(function(data, status, headers,config){
+              .error(function(data, status, headers, config){
                 console.log('data error: ' + JSON.stringify(status) + ' | ' + JSON.stringify(headers));
               });
           }
-
-          else{
-
-            if($scope.beaconLast.rssi != nearestBeacon.rssi){
-              if(nearestBeacon != null) {
-                $scope.beaconLast = nearestBeacon;
-                $http.get('https://vita-cena.mybluemix.net/meals?id=' + nearestBeacon.minor)
-                  .success(function(data, status, headers,config){
-                    $scope.result = "";
-                    console.log('data success');
-                    console.log(JSON.stringify(data[0])); // for browser console
-                    $scope.result = data[0];
-                  })
-                  .error(function(data, status, headers,config){
-                    console.log('data error: ' + JSON.stringify(status) + ' | ' + JSON.stringify(headers));
-                  });
-
-              }
-
-            }
-          }
-
-            if(nearestBeacon != null) {
-              //$scope.testResult = JSON.stringify(nearestBeacon);
-              $http.get('https://vita-cena.mybluemix.net/meals?id=' + nearestBeacon.minor)
-                .success(function(data, status, headers,config){
-                  $scope.result = "";
-                  console.log('data success');
-                  console.log(JSON.stringify(data[0])); // for browser console
-                  $scope.result = data[0];
-                })
-                .error(function(data, status, headers,config){
-                  console.log('data error: ' + JSON.stringify(status) + ' | ' + JSON.stringify(headers));
-                });
-            }
 
             $scope.$apply();
         });
