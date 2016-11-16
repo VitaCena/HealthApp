@@ -26,20 +26,14 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
 .controller("MainController", function($scope, $rootScope, $ionicPlatform, $cordovaBeacon, $http) {
 
     $scope.beacons = {};
-    $scope.actualMeal = {
-      energy: 1234,
-      protein: 2345,
-      carbs: 3456,
-      fat: 12
-    };
+    $scope.result = "";
+    $scope.testResult = "Test";
 
     $scope.onButtonClick = function(){
-
-      console.log("Test");
-      $scope.result = "";
       
       $http.get('https://vita-cena.mybluemix.net/meals?id=1')
         .success(function(data, status, headers,config){
+          $scope.result = "";
           console.log('data success');
           console.log(JSON.stringify(data[0])); // for browser console
           $scope.result = data[0];
@@ -47,6 +41,10 @@ angular.module('starter', ['ionic', 'ngCordovaBeacon'])
         .error(function(data, status, headers,config){
           console.log('data error: ' + JSON.stringify(status) + ' | ' + JSON.stringify(headers));
         });
+    };
+
+    $scope.onJawboneClick = function() { //https://vita-cena.mybluemix.net/redirect
+      
     };
 
     $ionicPlatform.ready(function() {
