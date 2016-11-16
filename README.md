@@ -1,6 +1,6 @@
 # Vita Cena Health App
 
-Im Rahmen des Master-Wahlfach IoT-Hackathon an der Hochschule Reutlingen wurde eine Smart-Health-Geschäftsanwendungsfall erdacht und umgesetzt. Der Anwendungsfall sieht eine IoT-Umsetzung für einen Fitnesstracker vor, um Mahlzeiten mit detailierten Informationen aus Essen-Kantinen über eine App dem Fitnesstracker hinzuzufügen.
+Im Rahmen des Master-Wahlfach IoT-Hackathon an der Hochschule Reutlingen wurde eine Smart-Health-Geschäftsanwendungsfall erdacht und umgesetzt. Der Anwendungsfall sieht eine IoT-Umsetzung für einen Fitnesstracker vor, um Mahlzeiten mit detailierten Informationen aus Essen-Kantinen über eine App dem Fitnesstracker hinzuzufügen. In der Kantine werden iBeacons jeweils einer Mahlzeit zugeordnet. Diese senden ihre jeweilige Beacon-ID, welche in der Datenbank auf eine bestimmten Mahlzeit gemappt ist. Die Informationen dieser Mahlzeit werden über die IBM Bluemix Anwendung abgefragt und dem Nutzer auf der App angezeigt. Der Nutzer kann eine angezeigte Mahlzeit auswählen und bestätigen. Nach Bestätigung wird die Mahlzeit über IBM Bluemix mithilfe der Jawbone API dem Jawbone UP hinzugefügt. Über Jawbone UP App können die hinzugefügten Mahlzeiten überprüft werden.
 
 ### MVP
 
@@ -21,16 +21,16 @@ Die Geschäftslogik ist über IBM Bluemix als 'Node-RED' Cloud Anwendung abgebil
 
 ### Eingesetzte Komponenten
 
-* Fitnesstracker Jawbone UP
+* Fitnesstracker Jawbone UP (als Essenstracker)
 * iBeacon
 * IBM Bluemix
 * Raspberry 3
+* [Cita Vena App]
 
 ### Links
 
 * [Endpoint Meals](https://jawbone.com/up/developer/endpoints/meals)
 * [Jawbone Doku] (https://jawbone.com/up/developer/)
-* [IoT Kaffeekanne on Twitter](https://twitter.com/kaffeekanne1)
 * [IONIC Framework] (http://ionicframework.com/)
 
 ### Projektteam
