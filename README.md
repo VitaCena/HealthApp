@@ -16,7 +16,7 @@ Aufgrund der begrenzten Zeit des Hackathon wurden folgende MVP-Anforderungen fü
 
 ### Architecture
 
-![Overview](http://rawgit.com/vitacena/healthapp/master/architektur.png)
+![Overview](https://github.com/VitaCena/HealthApp/blob/master/Architektur.PNG)
 
 The [GRAM RZ-30](sensor) scale is connected to a Raspberry Pi. Those two parts build our sensor. On the Raspberry Pi, a Python script receives the measurements from the scale and pushes them to IBM Bluemix.
 
